@@ -42,15 +42,16 @@ Teams can't scale because:
 - **Lost productivity**: Rework and investigation time
 - **Linear scaling only**: Can't parallelize work
 
-## Try It Yourself
+## The Solution
 
-Before we see how the UI and terminal work together, let's verify your git setup:
+Version control solves these problems by providing:
 
-```bash
-cd /root/lab
-git log -1
-```
+- **Merge capability**: Combine changes from multiple people
+- **Full history**: Track every change with authorship
+- **Conflict detection**: Git identifies overlapping changes
+- **Audit trail**: Complete record for compliance
+- **Safe collaboration**: Work simultaneously without blocking
 
-You should see the current lab commit. Complete the task above to continue.
+In the next pages, you'll see how Instruqt 2.0 uses git natively for both UI and terminal workflows.
 
-<instruqt-task id="verify-git-setup"></instruqt-task>
+<instruqt-quiz id="collaboration-challenges"></instruqt-quiz>

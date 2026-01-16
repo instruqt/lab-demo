@@ -2,11 +2,11 @@
 
 ## Your Turn: Terminal Workflow
 
-Now you'll make changes using the terminal, and we'll see what happens when you edit the same line Alex just changed.
+While you were learning about the Creator UI workflow, Alex actually went ahead and made that change. Now you'll make your own change in the terminal, and we'll see what happens when you both edit the same line.
 
 ### 1. Check Current State
 
-Navigate to the lab repository and check what's been happening:
+Let's see what Alex did:
 
 ```bash
 cd /root/lab
@@ -15,7 +15,7 @@ git log --oneline -5
 
 You'll see Alex's recent commit from the UI.
 
-View what Alex changed:
+View the details:
 
 ```bash
 git show HEAD

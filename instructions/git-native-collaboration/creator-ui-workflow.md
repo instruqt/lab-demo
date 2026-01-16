@@ -2,49 +2,59 @@
 
 ## How the Creator UI Works
 
-While you work in the terminal, your team members can edit lab content through the Creator UI.
+Let's walk through how your colleague Alex uses the Creator UI to make changes. Unlike proprietary CMS systems, the Instruqt Creator UI creates real git commits.
 
-**Note:** Screenshot placeholder - actual Creator UI editor showing file editing interface would appear here.
+### Step 1: Alex Opens the File
 
-### What Happens Behind the Scenes
+Alex wants to improve the welcome page introduction. They open the file in the Creator UI editor:
 
-When someone saves changes in the UI:
+![Creator UI Editor](/assets/creator_ui_editor.png)
 
-1. **The UI creates a real git commit** (not proprietary storage)
-2. **Proper authorship attribution** using git's co-author format
-3. **Commit to the same repository** you're working with in the terminal
+The UI provides a familiar editing interface with syntax highlighting and preview capabilities.
 
-**Note:** Screenshot placeholder - git commit with UI co-author attribution would appear here.
+### Step 2: Making the Change
 
-### Alex's Changes
+Alex changes line 25 in `instructions/opening/welcome.md`:
 
-While you were reviewing the validation chapter, Alex (your colleague) used the Creator UI to improve the welcome page introduction. Let's see what happened.
-
-Check the git log:
-
-```bash
-cd /root/lab
-git log --oneline -5
+**Before:**
+```
+You'll see how Instruqt 2.0 addresses each of these problems.
 ```
 
-You'll see Alex's commit with proper authorship attribution.
-
-View the commit details:
-
-```bash
-git show HEAD
+**After:**
+```
+You'll see how Alex addresses each of these problems.
 ```
 
-Notice:
-- Commit author: Alex Chen
-- Co-authored-by tag from the UI
-- Standard git commit format
+It's a simple change to test collaboration workflows.
 
-## Key Points
+### Step 3: Saving Creates a Git Commit
 
-- **Same git repository**: Terminal and UI both work with git
-- **Real git commits**: No proprietary storage layer
-- **Proper attribution**: Co-author tags track UI vs terminal edits
-- **Standard workflows**: Use any git tool (log, blame, diff, etc.)
+When Alex saves, the UI doesn't just update a database. It creates a **real git commit**:
 
-Next, you'll make changes in the terminal and see how git handles collaboration when both you and Alex edit the same file.
+![Git Commit with UI Attribution](/assets/ui_commit_authorship.png)
+
+Notice the commit includes:
+- **Proper authorship**: Alex is the commit author
+- **Standard format**: Regular git commit that any tool can read
+- **Commit message**: Describes what changed and why
+
+### What Makes This Different
+
+Traditional lab platforms use proprietary storage:
+- Changes go to a database, not version control
+- No git history, no authorship tracking
+- Can't use standard tools like `git log` or `git blame`
+- No merge capability when conflicts occur
+
+With Instruqt 2.0:
+- **Same git repository**: Terminal and UI both use git
+- **Real git commits**: Not a proprietary abstraction layer
+- **Full interoperability**: Any git tool works (log, diff, blame, etc.)
+- **Standard workflows**: Merge, branch, resolve conflicts normally
+
+## Key Takeaway
+
+The Creator UI is a git client. When team members use the UI, they're making git commits to the same repository you work with in the terminal.
+
+Next, you'll see what happens when you make changes in the terminal while Alex is using the UI...

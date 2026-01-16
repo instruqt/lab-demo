@@ -84,7 +84,7 @@ resource "page" "git_collab_challenges" {
   file  = "instructions/git-native-collaboration/collaboration-challenges.md"
 
   activities = {
-    verify-git-setup = resource.task.verify_git_setup
+    collaboration-challenges = resource.quiz.collaboration_challenges
   }
 }
 

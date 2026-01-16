@@ -27,29 +27,29 @@ resource "quiz" "dependency_graph" {
   attempts     = -1
 }
 
-# Question: Git workflow benefits
-resource "multiple_choice_question" "git_workflow_benefits" {
-  question = "Which benefits do you get from using git for lab collaboration? (Select all that apply)"
+# Question: Version control problems solved
+resource "multiple_choice_question" "version_control_problems" {
+  question = "What problems does version control solve for lab collaboration? (Select all that apply)"
   answer   = [
-    "Version controlled changes with full history",
-    "Authorship attribution for audit trails",
-    "Standard industry tools like git log and git blame work",
+    "Changes overwriting each other",
+    "No audit trail of who changed what",
+    "Lost work from accidental overwrites",
   ]
 
   distractors = [
-    "Automatic deployment to production environments",
-    "Guaranteed zero conflicts between team members",
+    "Slow file upload speeds",
+    "Lack of UI editing capabilities",
   ]
 
   hints = [
-    "Think about what git provides natively, not what external tools might add",
+    "Think about the 'Lost Fix' scenario - what went wrong?",
   ]
 }
 
-# Quiz: Git collaboration
-resource "quiz" "git_collaboration" {
+# Quiz: Collaboration challenges
+resource "quiz" "collaboration_challenges" {
   questions = [
-    resource.multiple_choice_question.git_workflow_benefits
+    resource.multiple_choice_question.version_control_problems
   ]
 
   show_hints   = true

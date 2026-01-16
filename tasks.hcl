@@ -105,24 +105,6 @@ resource "task" "validation_missing_file" {
   }
 }
 
-# Git-Native Collaboration: Verify Git Setup
-resource "task" "verify_git_setup" {
-  description = "Verify git is configured and ready for collaboration demo"
-
-  config {
-    target = resource.container.workstation
-  }
-
-  condition "git_ready" {
-    description = "Git configuration verified"
-
-    check {
-      script = "scripts/git-demos/check-git-ready-and-stage-commit.sh"
-      failure_message = "Run 'cd /root/lab && git log -1' to verify git is working"
-    }
-  }
-}
-
 # Git-Native Collaboration: Conflict Resolution
 resource "task" "git_conflict_resolution" {
   description = "Successfully resolve a git merge conflict"
@@ -133,6 +115,10 @@ resource "task" "git_conflict_resolution" {
 
   condition "conflict_resolved" {
     description = "Git conflict resolved and pushed"
+
+    setup {
+      script = "scripts/git-demos/setup-conflict-demo.sh"
+    }
 
     check {
       script = "scripts/git-demos/check-conflict-resolved.sh"
