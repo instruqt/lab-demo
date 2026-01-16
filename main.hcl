@@ -89,7 +89,7 @@ resource "lab" "main" {
 
       page "challenges" {
         reference = resource.page.git_collab_challenges
-        layout    = resource.layout.presentation
+        layout    = resource.layout.terminal
       }
 
       page "terminal-workflow" {
