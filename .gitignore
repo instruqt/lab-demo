@@ -16,3 +16,4 @@ Thumbs.db
 
 # Build artifacts
 *.log
+files/.ssh/id_ed25519

@@ -1,8 +1,10 @@
-FROM ghcr.io/jumppad-labs/dind:v1.1.0
+FROM ubuntu:22.04
 
-# Base image already includes: curl, ca-certificates, gnupg, docker-ce, docker-ce-cli, containerd.io
-# Install additional packages needed for demo
-RUN apt-get update && apt-get install -y \
+# Install base utilities and tools
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
+    curl \
+    ca-certificates \
+    gnupg \
     git \
     vim \
     jq \
@@ -17,5 +19,3 @@ RUN curl -L -o /tmp/instruqt-linux.zip https://github.com/instruqt/cli/releases/
 
 # Set up working directory
 WORKDIR /root
-
-CMD ["/bin/bash"]

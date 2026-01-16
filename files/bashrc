@@ -1,0 +1,27 @@
+# Bash configuration for lab workstation
+
+# Write history after each command for validation tracking
+export PROMPT_COMMAND="history -a"
+
+# Standard bash history configuration
+export HISTFILE=~/.bash_history
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+
+# Configure git on first shell start
+if [ ! -f /root/.git_configured ]; then
+    git config --global user.name "Lab User"
+    git config --global user.email "user@instruqt-lab.local"
+    git config --global init.defaultBranch main
+    git config --global pull.rebase false
+    touch /root/.git_configured
+fi
+
+# Configure lab repository on first shell start
+if [ -f /root/lab/.git/config ] && [ ! -f /root/.lab_git_configured ]; then
+    cd /root/lab
+    # Ensure remote is removed for local-only workflow
+    git remote remove origin 2>/dev/null || true
+    touch /root/.lab_git_configured
+    cd - > /dev/null
+fi
