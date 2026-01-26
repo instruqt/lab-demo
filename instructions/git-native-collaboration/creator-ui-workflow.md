@@ -11,10 +11,9 @@ Alex wants to improve the welcome page introduction. They open the file in the C
 ![Creator UI](/assets/ui_dashboard.png)
 
 The UI provides a familiar editing interface with syntax highlighting and preview capabilities.
+When you enter **edit mode** by clicking the button at the top of the screen, the lab fields become editable.
 
 ### Step 2: Making the Change
-
-![Edit Mode](/assets/ui_edit_mode.png)
 
 Alex changes line 25 in `instructions/opening/welcome.md`:
 
@@ -37,8 +36,6 @@ It's a simple change to test collaboration workflows.
 When Alex saves, the UI doesn't just update a database. It creates a **real git commit**:
 
 ![Commit Dialog](/assets/ui_commit_dialog.png)
-
-![Publish Dialog](/assets/ui_publish_dialog.png)
 
 Notice the commit includes:
 - **Proper authorship**: Alex is the commit author
