@@ -8,11 +8,13 @@ Let's walk through how your colleague Alex uses the Creator UI to make changes. 
 
 Alex wants to improve the welcome page introduction. They open the file in the Creator UI editor:
 
-![Creator UI Editor](/assets/creator_ui_editor.png)
+![Creator UI](/assets/ui_dashboard.png)
 
 The UI provides a familiar editing interface with syntax highlighting and preview capabilities.
 
 ### Step 2: Making the Change
+
+![Edit Mode](/assets/ui_edit_mode.png)
 
 Alex changes line 25 in `instructions/opening/welcome.md`:
 
@@ -26,18 +28,24 @@ You'll see how Instruqt 2.0 addresses each of these problems.
 You'll see how Alex addresses each of these problems.
 ```
 
+![Instructions Editor](/assets/ui_instructions.png)
+
 It's a simple change to test collaboration workflows.
 
 ### Step 3: Saving Creates a Git Commit
 
 When Alex saves, the UI doesn't just update a database. It creates a **real git commit**:
 
-![Git Commit with UI Attribution](/assets/ui_commit_authorship.png)
+![Commit Dialog](/assets/ui_commit_dialog.png)
+
+![Publish Dialog](/assets/ui_publish_dialog.png)
 
 Notice the commit includes:
 - **Proper authorship**: Alex is the commit author
 - **Standard format**: Regular git commit that any tool can read
 - **Commit message**: Describes what changed and why
+
+![Git Commit History](/assets/ui_commit_history.png)
 
 ### What Makes This Different
 

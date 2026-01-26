@@ -2,7 +2,7 @@
 
 # Question: What creates implicit dependencies
 resource "single_choice_question" "implicit_dependency" {
-  question = "What creates an implicit dependency in Instruqt 2.0?"
+  question = "What creates a dependency in Instruqt 2.0?"
   answer   = "Resource references"
 
   distractors = [
@@ -59,16 +59,16 @@ resource "quiz" "collaboration_challenges" {
 
 # Question: Asset management problem
 resource "single_choice_question" "asset_management" {
-  question = "What is the main problem with scattered asset storage across S3, GCS, and UI uploads?"
-  answer   = "No audit trail and difficult to track which labs use which assets"
+  question = "What was the fundamental limitation of asset management in Tracks?"
+  answer   = "Assets couldn't be included directly in track code - they had to come from external sources"
 
   distractors = [
-    "Files are too large and slow to download",
-    "Teams can't access cloud storage providers",
+    "Assets were too large to store efficiently",
+    "Only images could be used, not configuration files",
   ]
 
   hints = [
-    "Think about compliance and debugging across multiple systems",
+    "Think about where assets could live in the old system vs Instruqt 2.0",
   ]
 }
 

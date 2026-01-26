@@ -1,58 +1,63 @@
-# The Scattered Assets Problem
+# The Asset Management Problem
 
-## The Asset Storage Problem
+## The Fundamental Limitation
+
+In the old Tracks system, **assets could not live in your track code**. They had to come from somewhere else.
+
+### What Labs Need
 
 Lab creators work with multiple types of assets:
 
-### Images and Diagrams
+**Images and Diagrams:**
 - Architecture diagrams for instructions
 - Screenshots for walkthroughs
 - Company logos and branding
 - UI mockups and examples
 
-**Current storage locations**:
-- Uploaded through platform UI (but stored where? which version?)
-- Personal S3 buckets (access expires, accounts change)
-- Google Cloud Storage (permission issues across teams)
-- Base64 encoded directly in markdown (unmaintainable)
-- Attachments in support tickets (lost when tickets close)
-
-**The problem**: If someone deletes a file from S3, which labs break? No way to know.
-
-### Configuration Files
+**Configuration Files:**
 - Prometheus/Grafana configs for monitoring labs
-- Kubernetes manifests for container orchestration
+- Kubernetes manifests
 - Database seed data and schemas
 - Application config files (.env, application.yml)
 
-**Current storage locations**:
-- `cat <<EOF` heredocs in bash scripts (terrible diffs, can't review changes)
-- Separate GitHub repositories (which repo? access control?)
-- Cloud storage buckets (GCS, S3 - permission nightmares)
-
-**The problem**: You can't template these files with dynamic values. `cat` heredocs are your only option, and they're unreadable in git diffs.
-
-### Remote Code Repositories
+**Remote Code Repositories:**
 - Demo application source code
-- Example projects for learners to explore
-- Shared libraries and dependencies
+- Example projects for learners
+- Shared libraries
 
-**The problem**: How do you pull an entire git repository into a lab environment? Currently requires custom bash scripts with error handling.
+### The Old Way: External Sources Only
 
-## Enterprise Scale Problems
+Because assets couldn't be included in track code, you were forced to:
 
-When you have 100+ labs across multiple teams:
+**For images:**
+- Upload through platform UI (separate from code, not versioned with content)
+- Pull from S3/GCS buckets (permissions, access control, separate deployments)
+- Base64 encode in markdown (unmaintainable, breaks diffs)
 
-- **No audit trail** → can't track who changed what
-- **Debugging across 5 systems** → wasted time
-- **No single source of truth** → configuration drift
+**For config files:**
+- `cat <<EOF` heredocs in bash scripts (terrible diffs, no syntax highlighting)
+- Pull from separate GitHub repos (which repo? versioning nightmare)
+- Store in cloud buckets (permission management across teams)
 
-## Business Impact
+**For remote code:**
+- Write custom bash scripts with error handling
+- Hope the external source stays available
+- No guarantee of version consistency
 
-This scattered approach causes:
+### Why This Was Painful
 
-- Wasted time searching for assets
-- No visibility into who changed what
-- Security risks (unknown asset provenance)
+Every asset living **outside** your track meant:
+
+- **No single source of truth**: Code in one place, assets scattered everywhere
+- **No atomic deployments**: Deploy track code, then separately deploy assets
+- **Debugging across systems**: "Which S3 bucket has the current version?"
+- **Access control nightmare**: Different permissions for code vs assets
+- **No audit trail**: Who changed what asset? When? Why?
+
+## The New Way: Assets as Code
+
+Instruqt 2.0 changes the fundamental model: **assets live alongside your lab code in git**.
+
+You'll see how this works in the next page.
 
 <instruqt-quiz id="scattered-assets"></instruqt-quiz>

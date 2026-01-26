@@ -1,6 +1,6 @@
 # The Dependency Challenge
 
-You're building a monitoring stack where components depend on each other:
+Imagine you're building a monitoring stack where components depend on each other:
 
 - Demo app must be running before Prometheus can scrape it
 - Prometheus must be ready before Grafana connects
@@ -41,7 +41,7 @@ docker run -d -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml ...
 # Repeat for each dependency...
 ```
 
-You can't use docker-compose or standard orchestration. You're manually managing startup order, extracting runtime values, generating configs, and injecting them into containers.
+You can't use docker-compose or standard orchestration, because they won't handle all of these tasks for you. You're manually managing startup order, extracting runtime values, generating configs, and injecting them into containers.
 
 This all ends up turning into:
 
@@ -50,7 +50,7 @@ This all ends up turning into:
 - **Debug hell** - Misplaced quotes or syntax errors in embedded configs are nearly impossible to find
 - Hundreds of engineering hours spent maintaining these scripts
 - Brittle behavior with race conditions in production
-- Failed labs when timing assumptions broke
+- Failed labs when timing assumptions break
 
 This isn't an outlier. Manual dependency management becomes a maintenance burden at scale.
 
